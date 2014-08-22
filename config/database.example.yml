@@ -2,8 +2,8 @@ defaults: &defaults
   adapter: postgresql
   encoding: unicode
   pool: 20
-  username: katiedelfin
-  password: h/mp00dl3
+  username: ENTER_USERNAME
+  password: ENTER_PASSWORD
   min_messages: WARNING
 
 development:
