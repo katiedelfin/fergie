@@ -19,14 +19,10 @@ class LoggedActivitiesController < ApplicationController
       flash[:warning] = "Oops! Try again!"
     end
 
-    redirect_to logged_activity_path @logged_activity
+    redirect_to logged_activities_path
   end
 
   def show
-
-  end
-
-  def update
 
   end
 
@@ -34,8 +30,26 @@ class LoggedActivitiesController < ApplicationController
 
   end
 
-  def destroy
+  def update
+    @logged_activity.update(logged_activity_params)
 
+    if @logged_activity.save
+      flash[:notice] = "Updated!"
+    else
+      flash[:warning] = "Oops! Try again!"
+    end
+
+    redirect_to logged_activities_path
+  end
+
+  def destroy
+    if @logged_activity.destroy
+      flash[:notice] = "Logged activity removed"
+    else
+      flash[:warning] = "Oh noes!"
+    end
+
+    redirect_to logged_activities_path
   end
 
   protected

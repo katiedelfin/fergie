@@ -1,0 +1,7 @@
+%tr
+  %td= logged_activity.activity
+  %td= logged_activity.duration
+  %td= logged_activity.intensity
+  %td= logged_activity.points
+  %td= link_to "Edit", edit_logged_activity_path(logged_activity)
+  %td= link_to "Delete", logged_activity_path(logged_activity), method: :delete, data: { confirm: "Are you sure? You worked so hard on that!" }
