@@ -3,7 +3,7 @@ class LoggedActivitiesController < ApplicationController
   before_filter :find_logged_activity, only: [:show, :update, :edit, :destroy]
 
   def index
-    @logged_activities = current_user.logged_activities
+    @logged_activities = LoggedActivity.all
   end
 
   def new
