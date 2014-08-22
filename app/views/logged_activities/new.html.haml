@@ -4,7 +4,7 @@
     = f.collection_select :activity_id, Activity.all, :id, :name
   .fieldset
     = f.label "Intensity"
-    = f.select :intensity, LoggedActivity.intensities
+    = f.select :intensity, LoggedActivity.intensities.keys
   .fieldset
     = f.label "Duration"
     = f.text_field :duration
