@@ -12,7 +12,7 @@ class LoggedActivitiesController < ApplicationController
 
   def create
     @logged_activity = LoggedActivity.new(logged_activity_params)
-    binding.remote_pry
+
     if @logged_activity.save
       flash[:notice] = "Yayyy!!! Way to go!"
     else
