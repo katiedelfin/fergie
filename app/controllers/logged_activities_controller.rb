@@ -29,7 +29,7 @@ class LoggedActivitiesController < ApplicationController
 
   def destroy
     @logged_activity.destroy
-    respond_with @logged_activity, location: logged_activity_path
+    respond_with @logged_activity, location: logged_activities_path
   end
 
   private
