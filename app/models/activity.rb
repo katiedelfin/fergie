@@ -1,6 +1,6 @@
 class Activity < ActiveRecord::Base
 
-  has_many :logged_activities
+  has_many :logged_activities, dependent: :restrict_with_error
 
   validates :name, presence: true
 

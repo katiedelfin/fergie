@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity.destroy
-    respond_with @activity
+    respond_with @activity, location: activities_path
   end
 
   private
