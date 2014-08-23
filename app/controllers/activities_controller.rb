@@ -1,6 +1,9 @@
 class ActivitiesController < ApplicationController
+  responders :flash
 
-  before_filter :find_activity, only: [:show, :update, :edit, :destroy]
+  respond_to :html
+
+  before_filter :find_activity, only: [:update, :edit, :destroy]
 
   def index
     @activities = Activity.all
@@ -11,19 +14,8 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.new(activity_params)
-
-    if @activity.save
-      flash[:notice] = "New activity added!"
-    else
-      flash[:warning] = "Oops! Try again!"
-    end
-
-    redirect_to activities_path
-  end
-
-  def show
-
+    @activity = Activity.create(activity_params)
+    respond_with @activity, location: activities_path
   end
 
   def edit
@@ -32,27 +24,15 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity.update(activity_params)
-
-    if @activity.save
-      flash[:notice] = "Updated!"
-    else
-      flash[:warning] = "Oops! Try again!"
-    end
-
-    redirect_to activities_path
+    respond_with @activity, location: activities_path
   end
 
   def destroy
-    if @activity.destroy
-      flash[:notice] = "Activity removed"
-    else
-      flash[:warning] = "Oh noes!"
-    end
-
-    redirect_to activities_path
+    @activity.destroy
+    respond_with @activity
   end
 
-  protected
+  private
 
   def find_activity
     @activity = Activity.find params[:id]
@@ -60,6 +40,10 @@ class ActivitiesController < ApplicationController
 
   def activity_params
     params.require(:activity).permit :name
+  end
+
+  def interpolation_options
+    { resource_name: @activity.name }
   end
 
 end
