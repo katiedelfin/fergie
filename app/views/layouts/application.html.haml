@@ -8,7 +8,7 @@
   %body
     = render partial: "shared/navigation"
 
-    %p= flash[:error]
     %p= flash[:notice]
+    %p= flash[:alert]
 
     = yield

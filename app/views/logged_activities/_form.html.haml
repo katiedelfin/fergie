@@ -1,10 +1,12 @@
+%p= @logged_activity.errors.full_messages.to_sentence
+
 = form_for @logged_activity do |f|
   .fieldset
     = f.label "Activity"
-    = f.collection_select :activity_id, Activity.all, :id, :name
+    = f.collection_select :activity_id, Activity.all, :id, :name, include_blank: true
   .fieldset
     = f.label "Intensity"
-    = f.select :intensity, LoggedActivity.intensities.keys
+    = f.collection_select :intensity, LoggedActivity.intensities.keys, :to_s, :titlecase, include_blank: true
   .fieldset
     = f.label "Duration"
     = f.text_field :duration

@@ -11,6 +11,10 @@ class LoggedActivity < ActiveRecord::Base
   belongs_to :user
   belongs_to :activity
 
+  validates :activity, presence: true
+  validates :duration, presence: true, numericality: true
+  validates :intensity, presence: true
+
   before_save :calculate_points
 
   private

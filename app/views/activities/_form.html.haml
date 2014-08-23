@@ -1,3 +1,5 @@
+%p= @activity.errors.full_messages.to_sentence
+
 = form_for @activity do |f|
   .fieldset
     = f.label "Name"
