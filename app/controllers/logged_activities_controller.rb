@@ -30,7 +30,10 @@ class LoggedActivitiesController < ApplicationController
   end
 
   def logged_activity_params
-    params.require(:logged_activity).permit :activity_id, :duration, :intensity
+    params.require(:logged_activity).permit :activity_id,
+                                            :duration,
+                                            :intensity,
+                                            :date
   end
 
 end

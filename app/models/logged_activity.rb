@@ -14,6 +14,7 @@ class LoggedActivity < ActiveRecord::Base
   validates :activity, presence: true
   validates :duration, presence: true, numericality: true
   validates :intensity, presence: true
+  validates :date, presence: true
 
   before_save :calculate_points
 
