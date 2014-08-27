@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   respond_to :html
 
-  before_filter :find_activity, only: [:update, :edit, :destroy]
+  before_filter :find_activity, only: [:destroy]
 
   def index
     @activities = Activity.all
@@ -15,15 +15,6 @@ class ActivitiesController < ApplicationController
 
   def create
     @activity = Activity.create(activity_params)
-    respond_with @activity, location: activities_path
-  end
-
-  def edit
-
-  end
-
-  def update
-    @activity.update(activity_params)
     respond_with @activity, location: activities_path
   end
 

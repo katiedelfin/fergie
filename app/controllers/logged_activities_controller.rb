@@ -3,7 +3,7 @@ class LoggedActivitiesController < ApplicationController
 
   respond_to :html
 
-  before_filter :find_logged_activity, only: [:update, :edit, :destroy]
+  before_filter :find_logged_activity, only: [:destroy]
 
   def index
     @logged_activities = LoggedActivity.all
@@ -15,15 +15,6 @@ class LoggedActivitiesController < ApplicationController
 
   def create
     @logged_activity = LoggedActivity.create(logged_activity_params)
-    respond_with @logged_activity, location: logged_activities_path
-  end
-
-  def edit
-
-  end
-
-  def update
-    @logged_activity.update(logged_activity_params)
     respond_with @logged_activity, location: logged_activities_path
   end
 
