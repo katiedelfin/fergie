@@ -1,7 +1,7 @@
 module Api
   class LoggedActivitiesController < ApplicationController
     def index
-      logged_activities = LoggedActivity.all.includes(:activity)
+      logged_activities = LoggedActivity.paginate(:page => params[:page]).includes(:activity)
       render json: logged_activities.to_json(include: :activity), status: 200
     end
 

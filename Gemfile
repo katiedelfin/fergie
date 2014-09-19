@@ -12,6 +12,7 @@ gem 'pg'
 gem 'responders'
 gem 'turbolinks'
 gem 'angularjs-rails-resource'
+gem 'will_paginate', '~> 3.0'
 
 group :assets, :staging, :production do
   gem 'sass-rails', '~> 4.0.3'
