@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :logged_activities, only: [:index, :create, :destroy]
     resources :activities, only: [:index]
+    resources :intensities, only: [:index]
   end
 
 end
