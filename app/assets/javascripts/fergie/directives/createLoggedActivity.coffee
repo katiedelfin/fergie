@@ -1,4 +1,4 @@
-angular.module('fergie.directives').directive 'createLoggedActivity', (LoggedActivity)->
+angular.module('fergie.directives').directive 'createLoggedActivity', (Activity, Intensity, LoggedActivity)->
   restrict: 'E'
   template: """
     <form accept-charset="UTF-8" class="new_logged_activity" id="new_logged_activity" ng-submit="create()">
@@ -6,16 +6,14 @@ angular.module('fergie.directives').directive 'createLoggedActivity', (LoggedAct
         <label for="logged_activity_Activity">Activity</label>
         <select id="logged_activity_activity_id" ng-model="loggedActivity.activity_id">
           <option value=""></option>
-          <option value="2">Running</option>
+          <option ng-repeat="activity in activities" value="{{activity.id}}">{{activity.name}}</option>
         </select>
       </div>
       <div class="fieldset">
         <label for="logged_activity_Intensity">Intensity</label>
         <select id="logged_activity_intensity" ng-model="loggedActivity.intensity">
           <option value=""></option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
+          <option ng-repeat="intensity in intensities" value="{{intensity}}">{{intensity | capitalize}}</option>
         </select>
       </div>
       <div class="fieldset">
@@ -33,7 +31,12 @@ angular.module('fergie.directives').directive 'createLoggedActivity', (LoggedAct
   """
   
   link: (scope, element, attrs)->
-    console.log('HEY!');
+    Activity.query().then (activities)->
+      scope.activities = activities;
+
+    Intensity.query().then (intensities)->
+      scope.intensities = intensities;
+
     scope.loggedActivity = new LoggedActivity()
 
     scope.create = ()->
