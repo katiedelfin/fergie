@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :activities, except: [:show]
 
   namespace :api do
-    resources :logged_activities, only: [:index]
+    resources :logged_activities, only: [:index, :create, :destroy]
   end
 
 end
