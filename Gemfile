@@ -11,6 +11,7 @@ gem 'omniauth-google-oauth2'
 gem 'pg'
 gem 'responders'
 gem 'turbolinks'
+gem 'angularjs-rails-resource'
 
 group :assets, :staging, :production do
   gem 'sass-rails', '~> 4.0.3'
