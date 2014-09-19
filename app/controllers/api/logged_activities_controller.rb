@@ -11,7 +11,7 @@ module Api
     end
 
     def destroy
-      logged_activity = LoggedActivity.find(params[:id]).includes(:activity)
+      logged_activity = LoggedActivity.find(params[:id])
       logged_activity.destroy
       render json: logged_activity.to_json(include: :activity), status: 200
     end
